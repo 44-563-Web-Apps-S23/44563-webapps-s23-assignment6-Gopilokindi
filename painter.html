@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>
+        painter
+    </title>
+ </head>
+<body>
+
+<h2>Painter entry by Gopi Lokindi</h2>
+
+<form>
+    <label for="form1_secret">The hidden painter name:  </label>
+    <input type ="password" id="form1_secret" name="form1_secret" min=10 max=50  value="Monet"> <br>
+    <br>
+    <label for="form1_guess">Guess the painter: </label>
+    <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
+    <br>
+    <input type="button" onclick="checkPainter()" value="Check the guess">
+</form>
+
+<br>
+<div>Count:<p id="result">This text will be replaced </p></div>
+
+<script> 
+ var good=0;
+ var oops=0;
+function checkPainter(){
+    secret = document.getElementById("form1_secret").value;
+    guess = document.getElementById("form1_guess").value;
+    
+    out = document.getElementById("result");
+    if(secret==guess){
+        let confirmed=confirm("You got it right")
+        if(confirmed){
+        good++;
+        out.innerHTML = good;
+       }
+    }
+    else{
+        let confirmed=confirm("Sorry")
+        if(confirmed){
+        oops++;
+        out.innerHTML = oops;
+        }
+    }
+}
+</script>
+
+</body>
+</html> 
