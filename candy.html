@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Candy
+    </title>
+</head>
+<html>
+ 
+<body>
+
+<h2>chooses candy by Gopi Lokindi</h2>
+
+<form>
+    <input type="checkbox" id="cb1_dark" name="topping1" value="True" >
+    <label for="cb1_dark">Dark Chocolate</label></br>
+  
+    <input type="checkbox" id="cb1_nuts" name="topping2" value="True">
+    <label for="cb1_nuts">Nuts</label></br>
+  
+    <input type="checkbox" id="cb1_chewy" name="topping3"  value="False" >
+    <label for="cb1_chewy">Chewy</label></br>
+    <br>
+    <input type="button" onclick="selectBox()" value="Select a box">
+  </form>
+  <br>
+<div id="result">This checkbox text will be replaced by actual result</div>
+<br>
+<form>
+    <label for="form1_size">Enter the size </label>
+    <input type ="text" id="form1_size" name="form1_size" value="size"> <br>
+
+    <label for="form1_price">Enter price </label>
+    <input type ="text" id="form1_price" name="form1_price" > <br>
+    <br>
+    <input type="button" onclick="updateBox()" value="Update the box">
+</form>
+<br>
+<div id="result1">This text will be replaced by actual result</div>
+<script> 
+var my_candy_box={};
+function selectBox() {
+    dark = document.getElementById("cb1_dark").checked;
+    nuts = document.getElementById("cb1_nuts").checked;
+    chewy = document.getElementById("cb1_chewy").checked;
+    out = document.getElementById("result");
+    my_candy_box.Dark=dark;
+    my_candy_box.Nuts=nuts;
+    my_candy_box.Chewy=chewy;
+    out.innerHTML ="Dark Chocolate: "+my_candy_box.Dark+"\n"+"Nuts: "+my_candy_box.Nuts+"\n"+
+                    "Chewy: "+my_candy_box.Chewy;
+}
+
+function updateBox(){
+    size = document.getElementById("form1_size").value;
+    price = document.getElementById("form1_price").value;
+    out = document.getElementById("result1");
+    my_candy_box.Size=size;
+    my_candy_box.Price=price;
+    out.innerHTML="Size: "+my_candy_box.Size+"\n"+"Price: "+my_candy_box.Price;
+    
+}
+</script>
+
+</body>
+</html> 

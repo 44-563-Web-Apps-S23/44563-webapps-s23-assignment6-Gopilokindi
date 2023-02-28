@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        conversions
+    </title>
+</head>
+<html>
+ 
+<body>
+
+<h2>Shows currency conversions by Gopi Lokindi</h2>
+
+<form>
+    <label for="form1_amount">Enter base amount</label>
+    <input type ="number" id="form1_amount" name="form1_amount"  value="50"> <br>
+    <br>
+    <label for="form1_rate">Enter the conversion rate</label>
+    <input type ="number" id="form1_rate" name="form1_rate" value="35"> <br>
+    <br>
+    <input type="button" onclick="convert()" value="Show conversions">
+</form>
+
+
+<p id="result" style="font-weight: bold;">This text will be replaced by actual result</p>
+
+<form>
+    <input type="radio" id="rb1_average" name="Math" value="mean" checked>
+    <label for="rb1_average">average</label></br>
+  
+    <input type="radio" id="rb1_max" name="Math" value="maximum">
+    <label for="rb1_max">max</label></br>
+  
+    <input type="radio" id="rb1_min" name="Math" value="minimum">
+    <label for="rb1_min">min</label></br>
+    <br>
+    <input type="button" onclick="chooseOp()" value="submit">
+  </form>
+  <p id="result1" style="font-weight: bold;">This text will be replaced by actual result </p>  
+
+<script> 
+var toShow=""
+function convert (){
+    amount = document.getElementById("form1_amount").value
+    conversion = document.getElementById("form1_rate").value
+    var con_dup=conversion;
+    
+    out = document.getElementById("result")
+    for (let i = 0; i < 5; i++) {
+            conversion=amount*con_dup;
+            var con=conversion.toString();
+            toShow =toShow+" "+amount+" is "+(con.includes('.')==true?Math.round(conversion*100)/100:conversion)+";" ;
+            amount=amount*2;
+        }
+    out.innerHTML = "Conversions are: "+toShow
+   
+}
+
+function chooseOp(){
+    input_amount=document.getElementById("form1_amount").value;
+    input_conversion = document.getElementById("form1_rate").value;
+    input_con_dup=input_conversion;
+    let con=[];
+    for(let i = 0; i < 5; i++) {
+        input_conversion=input_amount*input_con_dup;
+            con[i]=input_conversion;
+            input_amount=input_amount*2;
+        }
+    out = document.getElementById("result1")
+    if(document.getElementById("rb1_max").checked){
+        out.innerHTML="Max is : "+Math.max.apply(null, con);
+    }
+    else if(document.getElementById("rb1_min").checked){
+        out.innerHTML="Min is : "+Math.min.apply(null, con);
+    }
+    else{
+        out.innerHTML="average is: "+con.reduce((a,b)=>a+b)/con.length;
+    }
+}
+</script>
+
+</body>
+</html> 

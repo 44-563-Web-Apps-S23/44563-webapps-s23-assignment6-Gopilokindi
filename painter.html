@@ -21,10 +21,14 @@
 
 <br>
 <div>Count:<p id="result">This text will be replaced </p></div>
-
+<div>
+    <img src="Dahlia.jpg" id="pictures" alt="Dahlia" height="100" width="100" onclick="selectImage()">
+</div>
 <script> 
  var good=0;
  var oops=0;
+ let useImage=1;
+
 function checkPainter(){
     secret = document.getElementById("form1_secret").value;
     guess = document.getElementById("form1_guess").value;
@@ -45,6 +49,23 @@ function checkPainter(){
         }
     }
 }
+function selectImage(){
+    switch(useImage){
+        case 1:
+                document.getElementById("pictures").src = ("kalmia.jpg");
+                useImage++;
+                break;
+        case 2:
+                document.getElementById("pictures").src=("lavender.jpg");
+                useImage++;
+                break;
+       case 3:
+                document.getElementById("pictures").src=("Dahlia.jpg");
+                useImage=1;
+                break;
+        }
+}
+    
 </script>
 
 </body>
