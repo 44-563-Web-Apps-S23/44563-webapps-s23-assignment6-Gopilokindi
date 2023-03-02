@@ -3,6 +3,7 @@
     <title>
         conversions
     </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <html>
  
@@ -17,7 +18,7 @@
     <label for="form1_rate">Enter the conversion rate</label>
     <input type ="number" id="form1_rate" name="form1_rate" value="35"> <br>
     <br>
-    <input type="button" onclick="convert()" value="Show conversions">
+    <input type="button" onclick="convert()" value="Show conversions" class="btn btn-primary">
 </form>
 
 
@@ -33,13 +34,14 @@
     <input type="radio" id="rb1_min" name="Math" value="minimum">
     <label for="rb1_min">min</label></br>
     <br>
-    <input type="button" onclick="chooseOp()" value="submit">
+    <input type="button" onclick="chooseOp()" value="submit" class="btn btn-primary">
   </form>
   <p id="result1" style="font-weight: bold;">This text will be replaced by actual result </p>  
 
 <script> 
-var toShow=""
+
 function convert (){
+    var toShow=""
     amount = document.getElementById("form1_amount").value
     conversion = document.getElementById("form1_rate").value
     var con_dup=conversion;
@@ -58,22 +60,15 @@ function convert (){
 function chooseOp(){
     input_amount=document.getElementById("form1_amount").value;
     input_conversion = document.getElementById("form1_rate").value;
-    input_con_dup=input_conversion;
-    let con=[];
-    for(let i = 0; i < 5; i++) {
-        input_conversion=input_amount*input_con_dup;
-            con[i]=input_conversion;
-            input_amount=input_amount*2;
-        }
-    out = document.getElementById("result1")
+    out = document.getElementById("result1");
     if(document.getElementById("rb1_max").checked){
-        out.innerHTML="Max is : "+Math.max.apply(null, con);
+        out.innerHTML="Max of "+input_amount+" and "+input_conversion+" is "+Math.max(input_amount,input_conversion);
     }
     else if(document.getElementById("rb1_min").checked){
-        out.innerHTML="Min is : "+Math.min.apply(null, con);
+        out.innerHTML="Min of "+input_amount+" and "+input_conversion+" is "+Math.min(input_amount,input_conversion);
     }
     else{
-        out.innerHTML="average is: "+con.reduce((a,b)=>a+b)/con.length;
+        out.innerHTML="average of "+input_amount+" and "+input_conversion+" is "+(parseInt(input_amount)+parseInt(input_conversion))/2;
     }
 }
 </script>

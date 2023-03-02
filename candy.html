@@ -53,10 +53,14 @@ function selectBox() {
 function updateBox(){
     size = document.getElementById("form1_size").value;
     price = document.getElementById("form1_price").value;
+    dark = document.getElementById("cb1_dark").checked;
+    nuts = document.getElementById("cb1_nuts").checked;
+    chewy = document.getElementById("cb1_chewy").checked;
     out = document.getElementById("result1");
     my_candy_box.Size=size;
     my_candy_box.Price=price;
-    out.innerHTML="Size: "+my_candy_box.Size+"\n"+"Price: "+my_candy_box.Price;
+    out.innerHTML="Dark Chocolate: "+my_candy_box.Dark+"\n"+"Nuts: "+my_candy_box.Nuts+"\n"+
+                    "Chewy: "+my_candy_box.Chewy+" Size: "+my_candy_box.Price;
     
 }
 </script>
